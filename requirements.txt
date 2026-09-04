@@ -1,0 +1,11 @@
+docling
+qdrant-client
+fastembed
+python-dotenv
+groq
+fastapi
+uvicorn
+pyjwt
+requests
+streamlit
+pytest
