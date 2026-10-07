@@ -91,9 +91,12 @@ pip install -r requirements.txt
 ```
 
 ### 2. Start Qdrant
-```
-docker run -d -p 6333:6333 -p 6334:6334 --name medibot-qdrant qdrant/qdrant
-```
+
+    # First time only — creates the container
+    docker run -d -p 6333:6333 -p 6334:6334 --name medibot-qdrant qdrant/qdrant
+
+    # Subsequent runs — container already exists
+    docker start medibot-qdrant
 
 ### 3. `.env` file (project root, git-ignored — see `.gitignore`)
 Copy the example and fill in your own values:
@@ -118,10 +121,11 @@ never silently falls back to an insecure default.
 `nursing/`) is included in this repo under `data/mediassist_data/` — no
 separate download needed.
 
-### 5. Run ingestion (once)
-```
-python run_ingestion.py
-```
+### 5. Run ingestion (first time only, or after container recreation)
+
+    # Skip this if Qdrant already has data from a previous run
+    python run_ingestion.py
+
 First run is slow — Docling and fastembed download their models on first use.
 
 ### 6. Run the app — three terminals, all with the venv active

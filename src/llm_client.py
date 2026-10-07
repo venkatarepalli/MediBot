@@ -2,7 +2,7 @@
 import os
 from groq import Groq
 
-LLM_MODEL = "openai/gpt-oss-20b"
+LLM_MODEL = "openai/gpt-oss-120b"
 _groq_client = None
 
 def get_llm_client() -> Groq:
